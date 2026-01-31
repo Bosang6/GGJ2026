@@ -12,7 +12,8 @@ public class Lost : MonoBehaviour
         } 
         if (other.CompareTag("Mask"))
         {
-            
+            Grab.Instance.GameOver();
+            Destroy(this);
         }
     }
 }

@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class MaskInfo
@@ -23,8 +25,9 @@ public class Grab : MonoBehaviour
 
     public GameObject cubeHold { get; private set; }
 
-    private float moveSpeed = 1.0f;
+    public float moveSpeed = 1.0f;
 
+    public AnimationCurve moveCurve;
     public Transform leftPoint;
     public Transform rightPoint;
 
@@ -94,11 +97,9 @@ public class Grab : MonoBehaviour
     {
         if (cubeHold)
         {
-            cubeHold.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-            if (cubeHold.transform.position.x > rightPoint.position.x || cubeHold.transform.position.x < leftPoint.position.x)
-            {
-                moveSpeed = -moveSpeed;
-            }            
+            var y = moveCurve.Evaluate(0.5f + Time.timeSinceLevelLoad * moveSpeed);
+            var pos = Vector3.Lerp(leftPoint.position, rightPoint.position, y);
+            cubeHold.transform.position = pos;
         }
     }
 
@@ -109,10 +110,26 @@ public class Grab : MonoBehaviour
         GameObject p = Prefabs[index].prefab;
         cubeHold = Instantiate(p, position);
     }
-    
-    public void FreezeXY(Rigidbody2D rb)
+
+    public List<Canvas> CanvasList;
+    public Canvas gameoverCanvas;
+
+    public void GameOver()
     {
-        rb.constraints |= (RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY);
+        foreach (var canvas in CanvasList)
+        {
+            canvas.gameObject.SetActive(false);
+        }
+        gameoverCanvas.gameObject.SetActive(true);
+        Debug.Log("Game Over");
     }
-    
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+    public void ToMenu()
+    {
+        SceneManager.LoadScene("BeginScene");
+    }
 }
