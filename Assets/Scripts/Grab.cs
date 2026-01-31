@@ -1,6 +1,16 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
+
+[System.Serializable]
+public class MaskInfo
+{
+    public int index;
+    public GameObject prefab;
+    public Texture2D tex;
+}
 
 public class Grab : MonoBehaviour
 {
@@ -20,7 +30,10 @@ public class Grab : MonoBehaviour
     public Transform cameraPosition;
 
     private Vector3 targetPosition;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [SerializeField]
+    public MaskInfo[] Prefabs;
+
     void Start()
     {
         cubeHold = Instantiate(squarePrefab, position);
@@ -33,7 +46,6 @@ public class Grab : MonoBehaviour
         instance = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
         MoveHoldCube();
@@ -42,7 +54,7 @@ public class Grab : MonoBehaviour
             Rigidbody2D rb = cubeHold.GetComponent<Rigidbody2D>();
             rb.gravityScale = 1;
             cubeHold = null;
-            Invoke("GenerateNewTotem", 1);
+            //Invoke("GenerateNewTotem", 1);
 
             targetPosition = targetPosition + Vector3.up;
         }
@@ -69,6 +81,11 @@ public class Grab : MonoBehaviour
     private void GenerateNewTotem()
     {
         cubeHold = Instantiate(squarePrefab, position);
+    }
+
+    public void Spawn(int index)
+    {
+        // cubeHold = Instantiate(prefab, position);
     }
     
 }
