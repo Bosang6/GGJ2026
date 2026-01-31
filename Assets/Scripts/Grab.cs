@@ -14,8 +14,8 @@ public class MaskInfo
 
 public class Grab : MonoBehaviour
 {
-    private Grab instance;
-    public Grab Instance => instance;
+    private static Grab instance;
+    public static Grab Instance => instance;
 
     public Transform position;
     public GameObject squarePrefab;
@@ -85,6 +85,7 @@ public class Grab : MonoBehaviour
 
     public void Spawn(int index)
     {
+        Debug.Log("Spawn totem index: " + index);
         // cubeHold = Instantiate(prefab, position);
     }
     
