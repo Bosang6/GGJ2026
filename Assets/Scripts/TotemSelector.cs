@@ -45,6 +45,7 @@ public class TotemSelector : MonoBehaviour
             TotemsUI[i].GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
             TotemsUI[i].GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
             {
+                if (Grab.Instance.cubeHold) return;
                 Grab.Instance.Spawn(selectedTotem.index);
                 totemsSelection[i] = null;
                 TotemsUI[i].GetComponent<UnityEngine.UI.Image>().sprite = null;

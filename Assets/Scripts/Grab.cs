@@ -1,15 +1,15 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Events;
-
 
 [System.Serializable]
 public class MaskInfo
 {
     public int index;
     public GameObject prefab;
-    public Texture2D tex;
+    public int score;
 }
 
 public class Grab : MonoBehaviour
@@ -17,12 +17,13 @@ public class Grab : MonoBehaviour
     private static Grab instance;
     public static Grab Instance => instance;
 
+    public GameObject totemRoot;
     public Transform position;
     public GameObject squarePrefab;
 
-    private GameObject cubeHold;
+    public GameObject cubeHold { get; private set; }
 
-    private float moveSpeed = 2.0f;
+    private float moveSpeed = 1.0f;
 
     public Transform leftPoint;
     public Transform rightPoint;
@@ -33,6 +34,11 @@ public class Grab : MonoBehaviour
 
     [SerializeField]
     public MaskInfo[] Prefabs;
+
+    private int index = 0;
+
+    public List<Rigidbody2D> onFloor = new List<Rigidbody2D>();
+    
 
     void Start()
     {
@@ -49,14 +55,32 @@ public class Grab : MonoBehaviour
     void Update()
     {
         MoveHoldCube();
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space) && cubeHold != null)
         {
+            cubeHold.transform.SetParent(totemRoot.transform);
+            
             Rigidbody2D rb = cubeHold.GetComponent<Rigidbody2D>();
+            
+            // verifica se la lista è piano
+            if (onFloor.Count < 5)
+            {
+                // Aggiunge una maschera
+                onFloor.Add(rb);
+            }
+            else
+            {
+                var obj = onFloor.First();
+                obj.bodyType = RigidbodyType2D.Kinematic;
+                onFloor.RemoveAt(0);
+                onFloor.Add(rb);
+            }
+            
             rb.gravityScale = 1;
-            cubeHold = null;
-            //Invoke("GenerateNewTotem", 1);
 
-            targetPosition = targetPosition + Vector3.up;
+            targetPosition = targetPosition + Vector3.up * 1.5f;
+            
+            cubeHold = null;
+            
         }
         
 
@@ -78,15 +102,17 @@ public class Grab : MonoBehaviour
         }
     }
 
-    private void GenerateNewTotem()
-    {
-        cubeHold = Instantiate(squarePrefab, position);
-    }
-
     public void Spawn(int index)
     {
-        Debug.Log("Spawn totem index: " + index);
-        // cubeHold = Instantiate(prefab, position);
+        if (cubeHold) return;
+        
+        GameObject p = Prefabs[index].prefab;
+        cubeHold = Instantiate(p, position);
+    }
+    
+    public void FreezeXY(Rigidbody2D rb)
+    {
+        rb.constraints |= (RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY);
     }
     
 }
