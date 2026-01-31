@@ -18,7 +18,7 @@ public class PostProcessingControls : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SetWobbleLevel(1);
+        SetWobbleLevel(0);
         SetPumpkinMaskLevel(0);
     }
 
@@ -32,7 +32,7 @@ public class PostProcessingControls : MonoBehaviour
     {
     }
 
-    void SetWobbleLevel(int level)
+    public void SetWobbleLevel(int level)
     {
         if (level >= 5)
             level = 5;    
@@ -46,7 +46,7 @@ public class PostProcessingControls : MonoBehaviour
         rendererFeatureWobble.passMaterial.SetFloat("_Intensity", intensity);
     }
 
-    void SetPumpkinMaskLevel(int level)
+    public void SetPumpkinMaskLevel(int level)
     {
         switch (level)
         {

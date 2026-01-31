@@ -4,12 +4,20 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum E_EffectType
+{
+    Null,
+    Wobble,
+    PumpkinMask,
+}
+
 [System.Serializable]
 public class MaskInfo
 {
     public int index;
     public GameObject prefab;
     public int score;
+    public E_EffectType type;
 }
 
 public class Grab : MonoBehaviour
@@ -108,6 +116,17 @@ public class Grab : MonoBehaviour
         
         GameObject p = Prefabs[index].prefab;
         cubeHold = Instantiate(p, position);
+
+        E_EffectType type = Prefabs[index].type;
+        switch (type)
+        {
+            case E_EffectType.Wobble:
+                PostProcessingControls.Instance.SetWobbleLevel(3);
+                break;
+            case E_EffectType.PumpkinMask:
+                PostProcessingControls.Instance.SetPumpkinMaskLevel(3);
+                break;
+        }
     }
     
     public void FreezeXY(Rigidbody2D rb)
