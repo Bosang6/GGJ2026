@@ -568,13 +568,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Totem_Game_Menu_Assets_18
+      name: Totem_Game_Menu_Assets_Number_0
       rect:
         serializedVersion: 2
-        x: 1111
-        y: 184
-        width: 71
-        height: 110
+        x: 1040
+        y: 265
+        width: 80
+        height: 120
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -593,8 +593,8 @@ TextureImporter:
       name: Totem_Game_Menu_Assets_19
       rect:
         serializedVersion: 2
-        x: 1426
-        y: 197
+        x: 1444
+        y: 435
         width: 123
         height: 109
       alignment: 0
@@ -721,6 +721,226 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Totem_Game_Menu_Assets_Number_1
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 262
+        width: 80
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feecb11137c42d543b285476f8bbd439
+      internalID: -551190072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Totem_Game_Menu_Assets_Number_2
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 265
+        width: 80
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6529cb38246847a4f9dc719e3f1faceb
+      internalID: -1250717660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Totem_Game_Menu_Assets_Number_3
+      rect:
+        serializedVersion: 2
+        x: 1422
+        y: 263
+        width: 80
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06487e1ebe014c342b85ab970ff91666
+      internalID: -9773591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Totem_Game_Menu_Assets_Number_4
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 264
+        width: 80
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfef3d12cae32ed418f2bbd3be70a6be
+      internalID: -1444015595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Totem_Game_Menu_Assets_Number_5
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 133
+        width: 80
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a055d096b22aed42a461db8c1924feb
+      internalID: 1029749181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Totem_Game_Menu_Assets_Number_6
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 138
+        width: 80
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeabd246ea2b880409cb0ef438b8ca0d
+      internalID: -1649292449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Totem_Game_Menu_Assets_Number_7
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 127
+        width: 80
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45aff5f199420a24a8c66e967eacb946
+      internalID: 1019337712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Totem_Game_Menu_Assets_Number_8
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 135
+        width: 80
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebfe298bd08e79f46bc6829dbf8c71b0
+      internalID: 281393086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Totem_Game_Menu_Assets_Number_9
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 137
+        width: 80
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b473538f55208464c974c2c9dcde6293
+      internalID: -1024237381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Totem_Game_Menu_Assets_Score
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 392
+        width: 326
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e54bbee5fa1f7a408109cd3fa466c6c
+      internalID: 1157654927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -745,7 +965,6 @@ TextureImporter:
       Totem_Game_Menu_Assets_15: 6439554673115324769
       Totem_Game_Menu_Assets_16: 4849337139925918625
       Totem_Game_Menu_Assets_17: -7176686314354344707
-      Totem_Game_Menu_Assets_18: 5326187708973866478
       Totem_Game_Menu_Assets_19: 7980124867509230056
       Totem_Game_Menu_Assets_2: 1384644301569453045
       Totem_Game_Menu_Assets_20: -8803886676579706861
@@ -760,6 +979,17 @@ TextureImporter:
       Totem_Game_Menu_Assets_7: -6795236356896221039
       Totem_Game_Menu_Assets_8: 2964369646519399679
       Totem_Game_Menu_Assets_9: -1325188132391989067
+      Totem_Game_Menu_Assets_Number_0: 5326187708973866478
+      Totem_Game_Menu_Assets_Number_1: -551190072
+      Totem_Game_Menu_Assets_Number_2: -1250717660
+      Totem_Game_Menu_Assets_Number_3: -9773591
+      Totem_Game_Menu_Assets_Number_4: -1444015595
+      Totem_Game_Menu_Assets_Number_5: 1029749181
+      Totem_Game_Menu_Assets_Number_6: -1649292449
+      Totem_Game_Menu_Assets_Number_7: 1019337712
+      Totem_Game_Menu_Assets_Number_8: 281393086
+      Totem_Game_Menu_Assets_Number_9: -1024237381
+      Totem_Game_Menu_Assets_Score: 1157654927
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

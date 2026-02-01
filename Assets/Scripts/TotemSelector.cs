@@ -9,6 +9,8 @@ public class TotemSelector : MonoBehaviour
     private List<MaskInfo> totemsSelection = new();
     public List<GameObject> TotemsUI = new();
 
+    private int lastIndex = -1;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,7 +36,7 @@ public class TotemSelector : MonoBehaviour
 
             int randomIndex = Random.Range(0, Grab.Instance.Prefabs.Length);
             MaskInfo selectedTotem = Grab.Instance.Prefabs[randomIndex];
-            while (totemsSelection.Contains(selectedTotem))
+            while (totemsSelection.Contains(selectedTotem) || selectedTotem.index == lastIndex)
             {
                 randomIndex = Random.Range(0, Grab.Instance.Prefabs.Length);
                 selectedTotem = Grab.Instance.Prefabs[randomIndex];
@@ -46,6 +48,7 @@ public class TotemSelector : MonoBehaviour
             TotemsUI[i].GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
             {
                 if (Grab.Instance.cubeHold) return;
+                lastIndex = selectedTotem.index;
                 Grab.Instance.Spawn(selectedTotem.index);
                 totemsSelection[i] = null;
                 TotemsUI[i].GetComponent<UnityEngine.UI.Image>().sprite = null;

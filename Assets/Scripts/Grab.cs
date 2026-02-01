@@ -11,6 +11,8 @@ public enum E_EffectType
     Null,
     Wobble,
     PumpkinMask,
+    Wresler,
+    Venice,
 }
 
 [System.Serializable]
@@ -20,6 +22,7 @@ public class MaskInfo
     public GameObject prefab;
     public int score;
     public E_EffectType type;
+    public AudioClip[] sounds;
 }
 
 public class Grab : MonoBehaviour
@@ -33,29 +36,38 @@ public class Grab : MonoBehaviour
 
     public GameObject cubeHold { get; private set; }
 
-    public float moveSpeed = 1.0f;
+    public float moveSpeed = 0.75f;
 
-    public AnimationCurve moveCurve;
     public Transform leftPoint;
     public Transform rightPoint;
 
+    public AnimationCurve moveCurve;
+    
     public Transform cameraPosition;
 
     private Vector3 targetPosition;
+    private Vector3 targetSpace;
 
     [SerializeField]
     public MaskInfo[] Prefabs;
 
-    private int index = 0;
-
     public List<Rigidbody2D> onFloor = new List<Rigidbody2D>();
-    
+
+    private E_EffectType currentEEffectType;
+
+    public Canvas canvas;
+
+    private BlockScript bs;
+
+    private bool isGameOver = false;
 
     void Start()
     {
-        cubeHold = Instantiate(squarePrefab, position);
-
+        Spawn(0);
         targetPosition = cameraPosition.position;
+        targetSpace = targetPosition - totemRoot.transform.position;
+        
+        canvas.gameObject.SetActive(false);
     }
 
     private void Awake()
@@ -65,12 +77,18 @@ public class Grab : MonoBehaviour
 
     void Update()
     {
-        MoveHoldCube();
-        if (Input.GetKeyDown(KeyCode.Space) && cubeHold != null)
+        // MoveHoldCube();
+        if (isGameOver)
+        {
+            
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && cubeHold != null)
         {
             cubeHold.transform.SetParent(totemRoot.transform);
             
             Rigidbody2D rb = cubeHold.GetComponent<Rigidbody2D>();
+
+            bs.PlayFall();
             
             // verifica se la lista è piano
             if (onFloor.Count < 5)
@@ -85,29 +103,63 @@ public class Grab : MonoBehaviour
                 onFloor.RemoveAt(0);
                 onFloor.Add(rb);
             }
-            
-            rb.gravityScale = 1;
 
-            targetPosition = targetPosition + Vector3.up * 1.5f;
+            if (currentEEffectType == E_EffectType.Wresler)
+                rb.gravityScale = 5.0f;
+            else
+            {
+                rb.gravityScale = 1;
+            }
+
+            var upperTarget = targetPosition;
+            if (onFloor.Count >= 2)
+            {
+                upperTarget = onFloor.Skip(onFloor.Count - 2).First().gameObject.transform.position + targetSpace;
+            }
+
+            var avgTarget = Vector3.Lerp(targetPosition, upperTarget, 0.65f);
+            targetPosition.y = Math.Max(targetPosition.y, avgTarget.y + 0.3f);
             
             cubeHold = null;
-            
+
+            moveSpeed = 0.75f;
         }
         
 
+        // Vector3 p = Vector2.Lerp(cameraPosition.position, targetPosition, Time.deltaTime);
+        // p.z = -10;
+        // cameraPosition.position = p;
+
+    }
+
+    private void FixedUpdate()
+    {
+        MoveHoldCube();
+        Scrichiolamento();
+    }
+
+    private void LateUpdate()
+    {
         Vector3 p = Vector2.Lerp(cameraPosition.position, targetPosition, Time.deltaTime);
         p.z = -10;
         cameraPosition.position = p;
-
     }
 
     private void MoveHoldCube()
     {
         if (cubeHold)
         {
-            var y = moveCurve.Evaluate(0.5f + Time.timeSinceLevelLoad * moveSpeed);
-            var pos = Vector3.Lerp(leftPoint.position, rightPoint.position, y);
-            cubeHold.transform.position = pos;
+            // cubeHold.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            // if (cubeHold.transform.position.x > rightPoint.position.x || cubeHold.transform.position.x < leftPoint.position.x)
+            // {
+            //     moveSpeed = -moveSpeed;
+            // }     
+            if (cubeHold)
+            {
+                var y = moveCurve.Evaluate(0.5f + Time.timeSinceLevelLoad * moveSpeed);
+                var pos = Vector3.Lerp(leftPoint.position, rightPoint.position, y);
+                cubeHold.transform.position = pos;
+            }
         }
     }
 
@@ -118,29 +170,35 @@ public class Grab : MonoBehaviour
         GameObject p = Prefabs[index].prefab;
         cubeHold = Instantiate(p, position);
 
-        E_EffectType type = Prefabs[index].type;
-        switch (type)
-        {
-            case E_EffectType.Wobble:
-                PostProcessingControls.Instance.SetWobbleLevel(3);
-                break;
-            case E_EffectType.PumpkinMask:
-                PostProcessingControls.Instance.SetPumpkinMaskLevel(3);
-                break;
-        }
-    }
+        bs = cubeHold.GetComponent<BlockScript>();
+        bs.maskInfo = Prefabs[index];
 
+        if (Prefabs[index].type == E_EffectType.PumpkinMask || Prefabs[index].type == E_EffectType.Wobble)
+        {
+            bs.PlaySelected();
+        }
+        
+    }
+    
     public List<Canvas> CanvasList;
     public Canvas gameoverCanvas;
 
     public void GameOver()
     {
+        isGameOver = true;
         foreach (var canvas in CanvasList)
         {
             canvas.gameObject.SetActive(false);
         }
+
+        if (cubeHold)
+        {
+            Destroy(cubeHold);
+            cubeHold = null;
+        }
         gameoverCanvas.gameObject.SetActive(true);
-        Debug.Log("Game Over");
+
+        targetPosition.y -= 3.0f;
     }
 
     public void Restart()
@@ -151,4 +209,39 @@ public class Grab : MonoBehaviour
     {
         SceneManager.LoadScene("BeginScene");
     }
+    
+    private int crickCount = 0;
+    private Vector3? last24offset = null;
+    private void Scrichiolamento()
+    {
+
+        var secondMask = onFloor.Reverse<Rigidbody2D>().Skip(1).FirstOrDefault();
+        var fourthMask = onFloor.Reverse<Rigidbody2D>().Skip(3).FirstOrDefault();
+        if (fourthMask != null)
+        {
+            var offset24 = secondMask.transform.position - fourthMask.transform.position;
+            if (last24offset == null)
+            {
+                last24offset = offset24;
+                return;
+            }
+            float angularChange = Math.Abs(Vector3.Angle(offset24, last24offset.Value));
+            if (angularChange > 0.021f)
+            {
+                crickCount += 1;
+                if (crickCount >= 15)
+                {
+                    Debug.Log("CRIK... CRAK...");
+                    crickCount = 0;
+                }
+
+            }
+            else
+            {
+                crickCount = 0;
+            }
+            last24offset = offset24;
+        }
+    }
+
 }
