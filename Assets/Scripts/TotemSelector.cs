@@ -21,12 +21,6 @@ public class TotemSelector : MonoBehaviour
         GenerateSelections();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void GenerateSelections()
     {
         for (int j = 0; j < totemsSelection.Count; j++)
@@ -53,6 +47,7 @@ public class TotemSelector : MonoBehaviour
                 totemsSelection[i] = null;
                 TotemsUI[i].GetComponent<UnityEngine.UI.Image>().sprite = null;
                 GenerateSelections();
+                BirdSpawner.Instance.OnPlayerMoveSpawnChance();
             });
         }
     }
