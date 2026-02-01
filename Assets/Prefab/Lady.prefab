@@ -158,7 +158,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.02969718}
+  m_Offset: {x: 0, y: 0.0029688478}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -168,7 +168,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.2702308, y: 1.8806713}
+  m_Size: {x: 2.2702308, y: 1.8153392}
   m_EdgeRadius: 0
 --- !u!61 &5815424456063329132
 BoxCollider2D:
@@ -204,7 +204,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.025848389}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -214,7 +214,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.365, y: 1.92}
+  m_Size: {x: 2.365, y: 1.8683033}
   m_EdgeRadius: 0
 --- !u!114 &5317800001208539240
 MonoBehaviour:
@@ -235,8 +235,8 @@ MonoBehaviour:
     type: 0
     sounds: []
   wings: {fileID: 3478141591980416720, guid: ec044b20d9e8d412bb79ce3ac138f5ed, type: 3}
-  fall: {fileID: 8300000, guid: 3ee65e17ec66f4d38aa8b38f3c5ee97c, type: 3}
-  impact: {fileID: 8300000, guid: 9662819ea8d924cc8b9c5c879a0632d2, type: 3}
+  fall: {fileID: 8300000, guid: 861314beb0974407eace93edbcc71620, type: 3}
+  impact: {fileID: 8300000, guid: 9c29bdfe1c6ed43fc9d637a41d432c52, type: 3}
   wingsSound: {fileID: 8300000, guid: 493c11e1c060f4f0c871531593055254, type: 3}
   selectedSound: {fileID: 0}
 --- !u!82 &-4761626359827909287

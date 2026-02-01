@@ -356,9 +356,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 525
-        y: 395
-        width: 57
-        height: 100
+        y: 269
+        width: 502
+        height: 229
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -369,94 +369,6 @@ TextureImporter:
       bones: []
       spriteID: aecb136b72d863240800000000000000
       internalID: 4771156056945573098
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_7
-      rect:
-        serializedVersion: 2
-        x: 583
-        y: 395
-        width: 59
-        height: 101
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 263b465d3dcbca290800000000000000
-      internalID: -7877714030173572254
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_8
-      rect:
-        serializedVersion: 2
-        x: 642
-        y: 395
-        width: 69
-        height: 102
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: eeffdf4d909bb87c0800000000000000
-      internalID: -4067954386519851026
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_9
-      rect:
-        serializedVersion: 2
-        x: 710
-        y: 396
-        width: 60
-        height: 99
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e2b328aa8d5556fd0800000000000000
-      internalID: -2349377241541887186
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_10
-      rect:
-        serializedVersion: 2
-        x: 769
-        y: 395
-        width: 59
-        height: 101
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a59c6114f8552dd10800000000000000
-      internalID: 2148874045969844570
       vertices: []
       indices: 
       edges: []
@@ -479,160 +391,6 @@ TextureImporter:
       bones: []
       spriteID: 7fca6222b674ca510800000000000000
       internalID: 1561701696250752247
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_16
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 263
-        width: 59
-        height: 101
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4d0e3ecff619fd790800000000000000
-      internalID: -7503118544005766956
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_17
-      rect:
-        serializedVersion: 2
-        x: 572
-        y: 263
-        width: 56
-        height: 100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bfb04a3a801e96350800000000000000
-      internalID: 6010582604924062715
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_18
-      rect:
-        serializedVersion: 2
-        x: 632
-        y: 264
-        width: 64
-        height: 98
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8b2783fc0b7afbe20800000000000000
-      internalID: 3368595424129086136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_19
-      rect:
-        serializedVersion: 2
-        x: 733
-        y: 265
-        width: 58
-        height: 99
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c2fe6ab8db94a2d60800000000000000
-      internalID: 7866180777596612396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_20
-      rect:
-        serializedVersion: 2
-        x: 793
-        y: 263
-        width: 64
-        height: 102
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 98b339a3af4d66c20800000000000000
-      internalID: 3199478756482956169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_21
-      rect:
-        serializedVersion: 2
-        x: 859
-        y: 264
-        width: 95
-        height: 101
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 452399be43546e880800000000000000
-      internalID: -8582095946314599852
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_22
-      rect:
-        serializedVersion: 2
-        x: 956
-        y: 264
-        width: 64
-        height: 98
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 213878b00f93e6dd0800000000000000
-      internalID: -2490989840740941038
       vertices: []
       indices: 
       edges: []
@@ -752,9 +510,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 525
-        y: 146
-        width: 122
-        height: 109
+        y: 15
+        width: 502
+        height: 240
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -765,50 +523,6 @@ TextureImporter:
       bones: []
       spriteID: 4950d3eab207d52b0800000000000000
       internalID: -5594191829215148652
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_29
-      rect:
-        serializedVersion: 2
-        x: 642
-        y: 146
-        width: 71
-        height: 110
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6561882f09b1a75f0800000000000000
-      internalID: -758263277900261802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_30
-      rect:
-        serializedVersion: 2
-        x: 710
-        y: 146
-        width: 123
-        height: 109
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5f3a204502035140800000000000000
-      internalID: 4707108257106902876
       vertices: []
       indices: 
       edges: []
@@ -919,116 +633,6 @@ TextureImporter:
       bones: []
       spriteID: 9848c7326873b2da0800000000000000
       internalID: -5968615831888952183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_36
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 14
-        width: 121
-        height: 109
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 57f7747233ebc8b40800000000000000
-      internalID: 5443935176495693685
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_37
-      rect:
-        serializedVersion: 2
-        x: 632
-        y: 15
-        width: 69
-        height: 106
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a928badd2aad9a3d0800000000000000
-      internalID: -3194782067604094310
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_38
-      rect:
-        serializedVersion: 2
-        x: 733
-        y: 16
-        width: 63
-        height: 107
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 86da285778c880ac0800000000000000
-      internalID: -3888703764814451352
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_39
-      rect:
-        serializedVersion: 2
-        x: 793
-        y: 14
-        width: 69
-        height: 110
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dfcd35aff386ef8e0800000000000000
-      internalID: -1657772988833735427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TOTEM_GAME_OVER_40
-      rect:
-        serializedVersion: 2
-        x: 859
-        y: 15
-        width: 166
-        height: 109
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f0873aa6a4a99e700800000000000000
-      internalID: 570156472246433807
       vertices: []
       indices: 
       edges: []

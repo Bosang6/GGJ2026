@@ -235,8 +235,8 @@ MonoBehaviour:
     type: 0
     sounds: []
   wings: {fileID: 3478141591980416720, guid: ec044b20d9e8d412bb79ce3ac138f5ed, type: 3}
-  fall: {fileID: 8300000, guid: 3ee65e17ec66f4d38aa8b38f3c5ee97c, type: 3}
-  impact: {fileID: 8300000, guid: 9662819ea8d924cc8b9c5c879a0632d2, type: 3}
+  fall: {fileID: 8300000, guid: d8ed2a14dbfdb46e4992b4b37f9ee581, type: 3}
+  impact: {fileID: 8300000, guid: 30c807d1b398c464b94d6103b5a0ecb3, type: 3}
   wingsSound: {fileID: 8300000, guid: 493c11e1c060f4f0c871531593055254, type: 3}
   selectedSound: {fileID: 0}
 --- !u!82 &9185777696672475516

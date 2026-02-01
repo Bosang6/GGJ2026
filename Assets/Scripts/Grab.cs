@@ -61,6 +61,10 @@ public class Grab : MonoBehaviour
 
     private bool isGameOver = false;
 
+    private Vector3 initCameraPosition;
+
+    private AudioSource fallTower;
+
     void Start()
     {
         Spawn(0);
@@ -68,6 +72,9 @@ public class Grab : MonoBehaviour
         targetSpace = targetPosition - totemRoot.transform.position;
         
         canvas.gameObject.SetActive(false);
+        initCameraPosition = cameraPosition.position;
+
+        fallTower = GetComponent<AudioSource>();
     }
 
     private void Awake()
@@ -75,6 +82,8 @@ public class Grab : MonoBehaviour
         instance = this;
     }
 
+    private float timer = 0;
+    
     void Update()
     {
         // MoveHoldCube();
@@ -82,9 +91,20 @@ public class Grab : MonoBehaviour
         {
             
         }
+        else if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }    
         else if (Input.GetKeyDown(KeyCode.Space) && cubeHold != null)
         {
+            timer = .5f;
             cubeHold.transform.SetParent(totemRoot.transform);
+            
+            Collider2D[] colliders = cubeHold.GetComponents<Collider2D>();
+            foreach (var c in colliders)
+            {
+                c.enabled = true;
+            }
             
             Rigidbody2D rb = cubeHold.GetComponent<Rigidbody2D>();
 
@@ -134,6 +154,7 @@ public class Grab : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isGameOver) return;
         MoveHoldCube();
         Scrichiolamento();
     }
@@ -177,7 +198,13 @@ public class Grab : MonoBehaviour
         {
             bs.PlaySelected();
         }
-        
+
+        Collider2D[] colliders = cubeHold.GetComponents<Collider2D>();
+        foreach (var c in colliders)
+        {
+            c.enabled = false;
+        }
+
     }
     
     public List<Canvas> CanvasList;
@@ -198,7 +225,9 @@ public class Grab : MonoBehaviour
         }
         gameoverCanvas.gameObject.SetActive(true);
 
-        targetPosition.y -= 3.0f;
+        targetPosition.y -= 2.0f;
+
+        targetPosition.y = Math.Max(initCameraPosition.y, targetPosition.y);
     }
 
     public void Restart()
@@ -231,7 +260,7 @@ public class Grab : MonoBehaviour
                 crickCount += 1;
                 if (crickCount >= 15)
                 {
-                    Debug.Log("CRIK... CRAK...");
+                    fallTower.Play();
                     crickCount = 0;
                 }
 
@@ -242,6 +271,11 @@ public class Grab : MonoBehaviour
             }
             last24offset = offset24;
         }
+    }
+    
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 }

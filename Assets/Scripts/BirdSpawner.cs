@@ -23,10 +23,17 @@ public class BirdSpawner : MonoBehaviour
         InvokeRepeating(nameof(OnIntervalSpawnChance), spawnInterval, spawnInterval);
     }
 
+    public float delay = .2f;
+    private float timer = 0;
     public void OnPlayerMoveSpawnChance()
     {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }    
         if (Random.value < PLayerMoveSpawnChance)
         {
+            timer = delay;
             SpawnBird();
         }
     }
