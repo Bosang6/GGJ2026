@@ -11,10 +11,8 @@ public class UI_SlideIn : MonoBehaviour
 
     void OnEnable()
     {
-        // 目标位置 = 当前在编辑器里摆好的位置
         endPos = target.anchoredPosition;
-
-        // 起点：同样的Y，只把X挪到左边屏幕外
+        
         target.anchoredPosition = new Vector2(endPos.x + startOffsetX, endPos.y);
 
         StopAllCoroutines();
@@ -28,7 +26,7 @@ public class UI_SlideIn : MonoBehaviour
 
         while (t < 1f)
         {
-            t += Time.unscaledDeltaTime / time; // UI动画通常用unscaled，暂停时也能动
+            t += Time.unscaledDeltaTime / time;
             float smooth = Mathf.SmoothStep(0, 1, t);
             target.anchoredPosition = Vector2.Lerp(from, to, smooth);
             yield return null;
