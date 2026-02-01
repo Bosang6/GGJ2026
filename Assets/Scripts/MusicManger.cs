@@ -7,6 +7,7 @@ public class MusicManger : MonoBehaviour
     void Start()
     {
         backgourndMusic = GetComponent<AudioSource>();
+        backgourndMusic.loop = true;
         backgourndMusic.Play();
     }
 
