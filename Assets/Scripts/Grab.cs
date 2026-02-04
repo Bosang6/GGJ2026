@@ -4,6 +4,7 @@ using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public enum E_EffectType
@@ -65,6 +66,8 @@ public class Grab : MonoBehaviour
 
     private AudioSource fallTower;
 
+    private InputAction releaseAction;
+
     void Start()
     {
         Spawn(0);
@@ -75,6 +78,7 @@ public class Grab : MonoBehaviour
         initCameraPosition = cameraPosition.position;
 
         fallTower = GetComponent<AudioSource>();
+        releaseAction = InputSystem.actions.FindAction("Release");
     }
 
     private void Awake()
@@ -95,7 +99,7 @@ public class Grab : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }    
-        else if (Input.GetKeyDown(KeyCode.Space) && cubeHold != null)
+        else if (releaseAction.IsPressed() && cubeHold != null)
         {
             timer = .5f;
             cubeHold.transform.SetParent(totemRoot.transform);
