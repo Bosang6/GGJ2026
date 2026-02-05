@@ -124,6 +124,9 @@ public class Grab : MonoBehaviour
             {
                 var obj = onFloor.First();
                 obj.bodyType = RigidbodyType2D.Kinematic;
+                obj.linearVelocityX /= 2f;
+                obj.linearVelocityY = 0f;
+                obj.angularVelocity /= 2f;
                 onFloor.RemoveAt(0);
                 onFloor.Add(rb);
             }
@@ -262,7 +265,7 @@ public class Grab : MonoBehaviour
             if (angularChange > 0.021f)
             {
                 crickCount += 1;
-                if (crickCount >= 15)
+                if (crickCount >= 20)
                 {
                     fallTower.Play();
                     crickCount = 0;

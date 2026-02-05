@@ -31,7 +31,7 @@ public class BackgroundScript : MonoBehaviour
         float h = colorOffset + colorChangeSpeed * cameraTransform.position.y;
 
         Sprite sprite;
-        Debug.Log(backgrounds.Count + ":" + (h+1)%backgrounds.Count);
+        //Debug.Log(backgrounds.Count + ":" + (h+1)%backgrounds.Count);
     
         if (isFront)
             sprite = backgrounds[Mathf.FloorToInt((h+1)%backgrounds.Count)];

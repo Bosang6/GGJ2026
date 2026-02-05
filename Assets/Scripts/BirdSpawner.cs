@@ -13,6 +13,8 @@ public class BirdSpawner : MonoBehaviour
     public float PLayerMoveSpawnChance = .5f;
     public List<Transform> SpawnPoints;
 
+    private GameObject birds;
+
     void Awake()
     {
         Instance = this;
@@ -20,20 +22,14 @@ public class BirdSpawner : MonoBehaviour
 
     void Start()
     {
+        birds = new GameObject("Birds");
         InvokeRepeating(nameof(OnIntervalSpawnChance), spawnInterval, spawnInterval);
     }
 
-    public float delay = .2f;
-    private float timer = 0;
     public void OnPlayerMoveSpawnChance()
-    {
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }    
+    {  
         if (Random.value < PLayerMoveSpawnChance)
         {
-            timer = delay;
             SpawnBird();
         }
     }
@@ -47,7 +43,7 @@ public class BirdSpawner : MonoBehaviour
 
     private void SpawnBird()
     {
-        var bird = Instantiate(BirdPref, transform);
+        var bird = Instantiate(BirdPref, birds.transform);
 
         int randomIndex = Random.Range(0, SpawnPoints.Count);
         bird.transform.position = SpawnPoints[randomIndex].position + 1f * (Vector3)Random.insideUnitCircle;
@@ -60,7 +56,8 @@ public class BirdSpawner : MonoBehaviour
         else
         {
             birdComp.InitialVelocity.x = velocityX;
-            bird.GetComponent<SpriteRenderer>().flipX = true;
+            var scale = birdComp.transform.localScale;
+            birdComp.transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
         }
     }
 }

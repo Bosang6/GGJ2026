@@ -9,6 +9,6 @@ PhysicsMaterial2D:
   m_Name: BirdMat
   serializedVersion: 2
   friction: 10
-  bounciness: 0.5
+  bounciness: 0.2
   m_FrictionCombine: 0
   m_BounceCombine: 4
