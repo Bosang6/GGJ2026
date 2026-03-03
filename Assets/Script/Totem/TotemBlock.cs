@@ -1,4 +1,9 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
+using Unity.Android.Gradle;
 using UnityEngine;
 
 public class TotemBlock : MonoBehaviour
@@ -6,6 +11,7 @@ public class TotemBlock : MonoBehaviour
     public enum E_BlockType
     {
         Normal,
+        Base,
         Scary,
         Wresler,
         Pumpkin,
@@ -25,6 +31,8 @@ public class TotemBlock : MonoBehaviour
     public Totem totem;
     public int indexInTotem = -1;
     private bool hasWings = false;
+
+    private bool scored = false;
 
     public void StartEffect()
     {
@@ -72,34 +80,66 @@ public class TotemBlock : MonoBehaviour
         GetComponent<Rigidbody2D>().simulated = false;
     }
 
+    private List<TotemBlock> collisions = new();
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (totem) return;
+        if (blockType == E_BlockType.Base) return;
 
         var block = collision.GetComponent<TotemBlock>();
-        if (block && block.totem){
-            block.totem.AddBlock(this);
+        if (block) collisions.Add(block);
 
+        if (totem) return;
+
+        if (block && block.totem){
+            SetTotem(block.totem);
+        }
+    }
+
+    public void SetTotem(Totem totem)
+    {
+        if (this.totem != null) return;
+        
+        this.totem = totem;
+        totem.AddBlock(this);
+
+        if (!scored)
+        {
+            scored = true;
             int gameScore = GameManager.Instance.Score;
 
             if ((gameScore + score) / 10 > gameScore / 10)
             {
                 Instantiate(wings_pref, transform);
                 hasWings = true;
+                GetComponent<Rigidbody2D>().mass *= 1.5f;
+                GetComponent<Rigidbody2D>().linearDamping += 0.1f;
+                GetComponent<Rigidbody2D>().angularDamping += 0.1f;
             }
-            
-            GameManager.Instance.Score += score;
-            
+
+            GameManager.Instance.AddScore(score);
+
             PlayImpact();
             OnTotemHit();
-            enabled = false;
+        }
+
+        foreach (var block in collisions)
+        {
+            block.SetTotem(totem);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerExit2D(Collider2D collision)
     {
+        if (blockType == E_BlockType.Base) return;
+
+        var block = collision.GetComponent<TotemBlock>();
+        if (!block) return;
         
+        collisions.Remove(block);
+        if (collisions.Count == 0 && totem)
+        {
+            totem.RemoveBlock(this);
+        }
     }
 
     public void PlayFall()
@@ -133,7 +173,7 @@ public class TotemBlock : MonoBehaviour
     {
         if (totem)
         {
-            totem.totemBlocks[indexInTotem] = null;
+            totem.RemoveBlock(this);
         }
     }
 }

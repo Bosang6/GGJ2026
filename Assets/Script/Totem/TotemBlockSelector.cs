@@ -26,6 +26,7 @@ public class TotemBlockSelector : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameManager.Instance.OnGameOver.AddListener(() => gameObject.SetActive(false));
         GenerateSelections();
     }
 

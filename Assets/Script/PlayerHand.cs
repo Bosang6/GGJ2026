@@ -18,9 +18,11 @@ public class PlayerHand : MonoBehaviour
     public float releaseDelay = .5f;
     private float release_cd = 0;
 
+    public Transform hand;
     public Transform leftPoint;
     public Transform rightPoint;
     public AnimationCurve moveCurve;
+    public Animator lowerAnim;
     private float moveTime = .5f;
 
     public UnityAction<TotemBlock> OnRelease;
@@ -30,10 +32,13 @@ public class PlayerHand : MonoBehaviour
     void Start()
     {
         releaseAction = InputSystem.actions.FindAction("Release");
+        GameManager.Instance.OnGameOver.AddListener(OnGameover);
     }
 
     private void Update()
     {
+        if (GameManager.Instance.IsGameOver) return;
+
         if (release_cd > 0)
         {
             release_cd -= Time.deltaTime;
@@ -47,7 +52,7 @@ public class PlayerHand : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (holdedBlock || true)
+        if (holdedBlock)
         {
             MoveHand();
         }
@@ -55,17 +60,23 @@ public class PlayerHand : MonoBehaviour
 
     private void MoveHand()
     {
-        moveTime += Time.deltaTime * speed;
+        moveTime += Time.fixedDeltaTime * speed;
 
         var y = moveCurve.Evaluate(moveTime);
-        var pos = Vector3.Lerp(leftPoint.position, rightPoint.position, y);
-        transform.position = pos;
+        var pos = Vector3.Lerp(leftPoint.localPosition, rightPoint.localPosition, y);
+        hand.transform.localPosition = pos;
     }
 
     public void ReleaseBlock()
     {
         if (!holdedBlock) return;
-        OnRelease?.Invoke(holdedBlock);
+
+        if (GameManager.Instance.cheatsEnabled) {
+            var top = GameManager.Instance.Totem.totemBlocks.LastOrDefault() ?? GameManager.Instance.Totem.baseBlock;
+            var pos = holdedBlock.transform.position;
+            pos.x = top.transform.position.x;
+            holdedBlock.transform.position = pos;
+        }
 
         holdedBlock.EnablePhysics();
         holdedBlock.transform.SetParent(originalParent);
@@ -76,6 +87,10 @@ public class PlayerHand : MonoBehaviour
 
         holdedBlock = null;
         speed = baseSpeed;
+
+        OnRelease?.Invoke(holdedBlock);
+
+        lowerAnim.SetBool("HasBlock", false);
     }
 
     public void GrabBlock(TotemBlock block)
@@ -84,12 +99,26 @@ public class PlayerHand : MonoBehaviour
 
         block.DisablePhysics();
         originalParent = block.transform.parent;
-        block.transform.SetParent(transform);
+        block.transform.SetParent(hand);
+        block.transform.localPosition = Vector3.zero;
 
         block.StartEffect();
         block.PlaySelected();
 
         holdedBlock = block;
         speed = baseSpeed * block.handSpeed;
+
+        lowerAnim.SetBool("HasBlock", true);
+    }
+
+    void OnGameover()
+    {
+        lowerAnim.SetBool("IsGameover", true);
+        if (holdedBlock)
+        {
+            holdedBlock.EndEffect();
+            //Destroy(holdedBlock.gameObject);
+            //holdedBlock = null;
+        }
     }
 }

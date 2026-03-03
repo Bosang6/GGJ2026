@@ -174,7 +174,7 @@ TextureImporter:
         width: 247
         height: 153
       alignment: 9
-      pivot: {x: 0.15332209, y: 0.28298372}
+      pivot: {x: 0.16086042, y: 0.2972101}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,7 +191,7 @@ TextureImporter:
       name: Extra_Assets_1_3
       rect:
         serializedVersion: 2
-        x: 255
+        x: 257
         y: 1286
         width: 252
         height: 177

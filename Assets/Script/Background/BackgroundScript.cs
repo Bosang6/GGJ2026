@@ -25,9 +25,13 @@ public class BackgroundScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(cameraTransform.position.y >= transform.position.y)
-            transform.Translate(10*Vector3.up);
+        if (cameraTransform.position.y >= transform.position.y)
+            transform.Translate(10 * Vector3.up);
         
+        if (cameraTransform.position.y < transform.position.y - 10)
+            transform.Translate(10 * Vector3.down);
+
+
         float h = Mathf.Max(0, colorOffset + colorChangeSpeed * cameraTransform.position.y);
 
         Sprite sprite;

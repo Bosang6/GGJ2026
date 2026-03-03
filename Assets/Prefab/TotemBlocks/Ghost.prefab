@@ -231,7 +231,7 @@ MonoBehaviour:
   wings_pref: {fileID: 3478141591980416720, guid: ec044b20d9e8d412bb79ce3ac138f5ed, type: 3}
   score: 2
   handSpeed: 1
-  blockType: 1
+  blockType: 2
   fall: {fileID: 8300000, guid: 98892c8431859469aad3ead572db0003, type: 3}
   impact: {fileID: 8300000, guid: ef0c950b58e2f4d078fd7ca0d9baed12, type: 3}
   wingsSound: {fileID: 8300000, guid: 493c11e1c060f4f0c871531593055254, type: 3}

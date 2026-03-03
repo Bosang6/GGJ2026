@@ -181,8 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TotemBlock
   wings_pref: {fileID: 3478141591980416720, guid: ec044b20d9e8d412bb79ce3ac138f5ed, type: 3}
   score: 0
-  hand_speed: 0
-  blockType: 0
+  handSpeed: 1
+  blockType: 1
   fall: {fileID: 0}
   impact: {fileID: 0}
   wingsSound: {fileID: 0}

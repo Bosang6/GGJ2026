@@ -78,13 +78,17 @@ public class PostProcessingControls : MonoBehaviour
         transitionPumpkinMaskSpeed = Math.Abs(intendedPumpkinMask-currentPumpkinMask) / transitionTime;
     }
 
-    void SetPumpkinMaskEffect(float intensity)
+    private void SetPumpkinMaskEffect(float intensity)
     {
         rendererFeaturePumpkinMask.SetActive(intensity!=0);
         rendererFeaturePumpkinMask.passMaterial.SetFloat("_Intensity", 1f-(float) Math.Pow(.1f,intensity));
     }
 
-
+    public void ClearEffects()
+    {
+        TransitionPumpkinMaskEffect(0f);
+        TransitionWobbleEffect(0f);
+    }
 
 
 }
